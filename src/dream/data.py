@@ -9,14 +9,14 @@ def process_data(
     npy_path="data/dream.npy",
     auth_path="data/auth.json",
 ):
-    # root_url = "https://www.golla.tw/"
-    # targets = [
-    #     *("", "renwu", "dongwu", "zhiwu", "wupin", "huodong", "shenghuo", "ziran"),
-    #     *("guishen", "jianzhu", "qita", "yunfujiemeng", "mengjing", "wenhua", "health"),
-    # ]
+    root_url = "https://www.golla.tw/"
+    targets = [
+        *("", "renwu", "dongwu", "zhiwu", "wupin", "huodong", "shenghuo", "ziran"),
+        *("guishen", "jianzhu", "qita", "yunfujiemeng", "mengjing", "wenhua", "health"),
+    ]
 
-    # sub_urls = {_ for target in targets for _ in gather_dream_urls(urljoin(root_url, target) + "/")}
-    # crawl_dreams(sub_urls, json_path)
+    sub_urls = {_ for target in targets for _ in gather_dream_urls(urljoin(root_url, target) + "/")}
+    crawl_dreams(sub_urls, json_path)
     create_embs(json_path, npy_path, auth_path=auth_path)
 
 
