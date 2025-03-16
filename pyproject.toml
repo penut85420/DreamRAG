@@ -10,6 +10,7 @@ dependencies = [
     "beautifulsoup4",
     "faiss-cpu",
     "fire",
+    "gradio",
     "numpy",
     "openai",
     "requests",
