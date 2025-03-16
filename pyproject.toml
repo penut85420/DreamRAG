@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dream"
+version = "1.0.0"
+description = "Dreaming"
+dependencies = [
+    "beautifulsoup4",
+    "faiss-cpu",
+    "fire",
+    "numpy",
+    "openai",
+    "requests",
+    "tqdm",
+]
