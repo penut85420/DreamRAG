@@ -3,7 +3,12 @@ from typing import Iterable
 from dream.utils import Auth, Dream, load_json
 
 
-def cli_demo(json_path, npy_path, query, auth_path="data/auth.json"):
+def cli_demo(
+    query,
+    json_path="data/dream.json",
+    npy_path="data/dream.npy",
+    auth_path="data/auth.json",
+):
     import faiss
     import numpy as np
     from openai import OpenAI
@@ -25,14 +30,16 @@ def cli_demo(json_path, npy_path, query, auth_path="data/auth.json"):
 
     body = [data[ii].body for ii in reversed(i[0])]
     body = "\n\n".join(body)
-    print(body)
 
     inst = f"{body}\n\n請根據以上周公解夢的說明，幫使用者解夢。\n\n使用者夢境：{query}"
+    print(inst)
+
     outputs: Iterable[ChatCompletionChunk] = client.chat.completions.create(
         messages=[dict(role="user", content=inst)],
         model="gpt-4o-mini",
         stream=True,
     )
 
+    print("\n===\n")
     for chunk in outputs:
         print(end=chunk.choices[0].delta.content, flush=True)
